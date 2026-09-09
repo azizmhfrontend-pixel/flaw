@@ -87,6 +87,29 @@
     -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
             mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
   }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .marquee-track {
+    animation: marquee 28s linear infinite;
+    width: max-content;
+  }
+
+  .marquee-track:hover { animation-play-state: paused; }
+
+  .phone-frame {
+    aspect-ratio: 9 / 16;
+    max-width: 260px;
+    border: 8px solid #18181b;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 24px 60px -24px rgba(0,0,0,.9);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation-play-state: paused; }
+  }
 </style>
 </head>
 
@@ -179,6 +202,97 @@
         <p class="font-display font-bold text-xl text-white">48H</p>
         <p class="text-xs text-zinc-500 mt-1">E-com ad turnaround</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLIENT LOGO MARQUEE ============ -->
+<section aria-label="Selected client types" class="relative border-y border-white/5 bg-panel/60 py-7 overflow-hidden">
+  <p class="text-center text-[10px] sm:text-xs font-semibold tracking-[0.24em] text-zinc-500">TRUSTED BY AMBITIOUS FOUNDERS, CREATORS &amp; E-COM BRANDS</p>
+  <div class="relative mt-5 overflow-hidden">
+    <div class="marquee-track flex items-center gap-3 pr-3">
+      <div class="flex items-center gap-3" aria-hidden="true">
+        <span class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-display font-bold tracking-tight text-zinc-200"><span class="h-2 w-2 rounded-full bg-crimson"></span>MieBio</span>
+        <span class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-display font-bold tracking-tight text-zinc-200"><span class="h-2 w-2 rounded-full bg-amber"></span>BioRito</span>
+        <span class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-display font-bold tracking-tight text-zinc-200"><span class="h-2 w-2 rounded-full bg-zinc-500"></span>Real Estate</span>
+        <span class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-display font-bold tracking-tight text-zinc-200"><span class="h-2 w-2 rounded-full bg-crimson"></span>Consulting Brands</span>
+        <span class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-display font-bold tracking-tight text-zinc-200"><span class="h-2 w-2 rounded-full bg-amber"></span>Northstar Labs</span>
+        <span class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-display font-bold tracking-tight text-zinc-200"><span class="h-2 w-2 rounded-full bg-zinc-500"></span>Founder-led Co.</span>
+      </div>
+      <div class="flex items-center gap-3" aria-hidden="true">
+        <span class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-display font-bold tracking-tight text-zinc-200"><span class="h-2 w-2 rounded-full bg-crimson"></span>MieBio</span>
+        <span class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-display font-bold tracking-tight text-zinc-200"><span class="h-2 w-2 rounded-full bg-amber"></span>BioRito</span>
+        <span class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-display font-bold tracking-tight text-zinc-200"><span class="h-2 w-2 rounded-full bg-zinc-500"></span>Real Estate</span>
+        <span class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-display font-bold tracking-tight text-zinc-200"><span class="h-2 w-2 rounded-full bg-crimson"></span>Consulting Brands</span>
+        <span class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-display font-bold tracking-tight text-zinc-200"><span class="h-2 w-2 rounded-full bg-amber"></span>Northstar Labs</span>
+        <span class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-display font-bold tracking-tight text-zinc-200"><span class="h-2 w-2 rounded-full bg-zinc-500"></span>Founder-led Co.</span>
+      </div>
+    </div>
+    <div class="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#0d0e12] to-transparent"></div>
+    <div class="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#0d0e12] to-transparent"></div>
+  </div>
+</section>
+
+<!-- ============ WORK IN ACTION ============ -->
+<section id="work" class="relative px-5 sm:px-8 py-24 border-t border-white/5 bg-panel/30">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl">
+      <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold tracking-wide text-zinc-300">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber"></span>
+        Our Work In Action
+      </div>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-5">The scroll stops when the creative earns it.</h2>
+      <p class="mt-4 text-zinc-400 leading-relaxed">Two production systems, built for the moment someone decides whether to keep watching, click through, or book a call.</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <article class="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-7 flex flex-col items-center">
+        <div class="w-full flex items-center justify-between mb-5">
+          <div>
+            <p class="text-xs font-semibold tracking-wide text-crimson">TRACK 01 · AUTHORITY</p>
+            <h3 class="font-display font-bold text-xl text-white mt-1">Talks that build trust</h3>
+          </div>
+          <span class="rounded-full border border-crimson/30 bg-crimson/10 px-3 py-1 text-xs font-semibold text-crimson">B2B</span>
+        </div>
+        <div class="phone-frame relative w-full overflow-hidden rounded-[1.25rem] bg-black">
+          <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline controls poster="images/authority-poster.jpg">
+            <source src="videos/authority-breakdown.mp4" type="video/mp4">
+            <track kind="subtitles" src="videos/authority-en.vtt" srclang="en" label="English">
+            Your browser does not support HTML5 video.
+          </video>
+          <div class="pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-black/70 to-transparent p-4">
+            <p class="text-[11px] font-bold uppercase tracking-wide text-white">The hook is the strategy.</p>
+          </div>
+        </div>
+        <div class="mt-5 flex w-full flex-wrap gap-2">
+          <span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-zinc-300">Authority Reel</span>
+          <span class="rounded-full border border-crimson/30 bg-crimson/10 px-3 py-1.5 text-xs font-semibold text-crimson">85K Organic Reach</span>
+        </div>
+      </article>
+
+      <article class="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-7 flex flex-col items-center">
+        <div class="w-full flex items-center justify-between mb-5">
+          <div>
+            <p class="text-xs font-semibold tracking-wide text-amber">TRACK 02 · PERFORMANCE</p>
+            <h3 class="font-display font-bold text-xl text-white mt-1">Creative built to convert</h3>
+          </div>
+          <span class="rounded-full border border-amber/30 bg-amber/10 px-3 py-1 text-xs font-semibold text-amber">E-COM</span>
+        </div>
+        <div class="phone-frame relative w-full overflow-hidden rounded-[1.25rem] bg-black">
+          <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline controls poster="images/performance-poster.jpg">
+            <source src="videos/ecom-performance-cuts.mp4" type="video/mp4">
+            <track kind="subtitles" src="videos/ecom-en.vtt" srclang="en" label="English">
+            Your browser does not support HTML5 video.
+          </video>
+          <div class="pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-black/70 to-transparent p-4">
+            <p class="text-[11px] font-bold uppercase tracking-wide text-white">Stop the scroll. Show the proof.</p>
+          </div>
+        </div>
+        <div class="mt-5 flex w-full flex-wrap gap-2">
+          <span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-zinc-300">Meta Performance Ad</span>
+          <span class="rounded-full border border-amber/30 bg-amber/10 px-3 py-1.5 text-xs font-semibold text-amber">3.4x ROAS</span>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -279,9 +393,18 @@
 
       <!-- Slot 1: Featured / large -->
       <div class="group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden border border-white/10 bg-panel min-h-[320px] md:min-h-0">
-        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Director and crew filming on-set with camera rig and lighting" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <video class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105" autoplay muted loop playsinline poster="images/bts-studio.jpeg" aria-label="Director and crew filming on-set with camera rig and lighting">
+          <source src="videos/tournage-1.mp4" type="video/mp4">
+          <img src="images/bts-studio.jpeg" alt="Director and crew filming on-set with camera rig and lighting" class="w-full h-full object-cover">
+        </video>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
         <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl"></div>
+        <div class="absolute top-5 right-5">
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/35 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
+            <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-crimson"></span>
+            Live On Set
+          </span>
+        </div>
         <div class="absolute bottom-0 left-0 right-0 p-6">
           <span class="inline-flex items-center gap-2 rounded-full border border-crimson/30 bg-crimson/15 backdrop-blur-md px-3 py-1.5 text-xs font-semibold text-white">
             <span class="w-1.5 h-1.5 rounded-full bg-crimson"></span>
@@ -318,7 +441,7 @@
 
       <!-- Slot 4: Talking-head setup -->
       <div class="group relative md:col-span-1 rounded-2xl overflow-hidden border border-white/10 bg-panel min-h-[220px]">
-        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Talking-head creator setup with teleprompter, ring light, and wireless lav mic" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <img src="images/bts-outdoor.jpeg" alt="Talking-head creator setup with teleprompter, ring light, and wireless lav mic" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
         <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl"></div>
         <div class="absolute bottom-0 left-0 right-0 p-5">
