@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLAW.CO — B2B Growth Engine & E-Commerce Creative Studio</title>
+<meta name="description" content="FLAW.CO builds authority for coaches and consultants through organic content, and produces high-converting performance creative for scaling e-commerce brands.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          base: '#09090b',
+          panel: '#0d0e12',
+          line: '#27272a',
+          crimson: { DEFAULT: '#f43f5e', dim: '#9f1239' },
+          amber: { DEFAULT: '#f59e0b', dim: '#92400e' },
+        },
+        fontFamily: {
+          display: ['"Plus Jakarta Sans"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  html { background-color: #09090b; }
+  body {
+    background-color: #09090b;
+    color: #f4f4f5;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+  ::selection { background: #f43f5e; color: #fff; }
+
+  /* Focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid #f43f5e;
+    outline-offset: 2px;
+  }
+
+  .glow-crimson {
+    background: radial-gradient(circle, rgba(244,63,94,0.35) 0%, rgba(244,63,94,0) 70%);
+  }
+  .glow-amber {
+    background: radial-gradient(circle, rgba(245,158,11,0.28) 0%, rgba(245,158,11,0) 70%);
+  }
+
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+
+  .card-hover { transition: border-color .25s ease, transform .25s ease; }
+  .card-hover:hover { transform: translateY(-3px); }
+
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px;
+    background: #f43f5e; transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+  }
+  .nav-link:hover::after { transform: scaleX(1); }
+
+  .btn-primary {
+    background: linear-gradient(180deg, #fb7185 0%, #f43f5e 100%);
+    box-shadow: 0 0 0 1px rgba(244,63,94,0.4), 0 8px 24px -8px rgba(244,63,94,0.6);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 0 1px rgba(244,63,94,0.6), 0 12px 28px -8px rgba(244,63,94,0.75); }
+
+  .track-toggle-btn { transition: all .25s ease; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+</style>
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+<!-- ============ NAVBAR ============ -->
+<header id="navbar" class="fixed top-0 inset-x-0 z-50 border-b border-white/5 bg-base/70 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2 font-display font-extrabold text-lg tracking-tight">
+      <span class="inline-block w-2 h-2 rounded-full bg-crimson"></span>
+      FLAW<span class="text-crimson">.CO</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm text-zinc-300 font-medium">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#bts" class="nav-link">Behind The Scenes</a>
+      <a href="#results" class="nav-link">Results &amp; Feedback</a>
+      <a href="#process" class="nav-link">Process</a>
+      <a href="#packages" class="nav-link">Packages</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="#apply" class="hidden sm:inline-flex items-center gap-2 rounded-full btn-primary text-white text-sm font-semibold px-5 py-2.5">
+        Book 15-Min Audit
+      </a>
+      <button id="menuBtn" aria-label="Open menu" aria-expanded="false" class="md:hidden p-2 -mr-2 text-zinc-200">
+        <svg id="iconMenu" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+        </svg>
+        <svg id="iconClose" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="md:hidden hidden border-t border-white/5 bg-base px-5 py-5 space-y-4">
+    <a href="#services" class="block text-zinc-200 text-base font-medium">Services</a>
+    <a href="#bts" class="block text-zinc-200 text-base font-medium">Behind The Scenes</a>
+    <a href="#results" class="block text-zinc-200 text-base font-medium">Results &amp; Feedback</a>
+    <a href="#process" class="block text-zinc-200 text-base font-medium">Process</a>
+    <a href="#packages" class="block text-zinc-200 text-base font-medium">Packages</a>
+    <a href="#apply" class="block text-center rounded-full btn-primary text-white text-sm font-semibold px-5 py-3 mt-2">
+      Book 15-Min Audit
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative pt-40 pb-28 px-5 sm:px-8 overflow-hidden">
+  <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[640px] h-[640px] glow-crimson blur-3xl pointer-events-none"></div>
+  <div class="absolute top-40 -right-40 w-[420px] h-[420px] glow-amber blur-3xl pointer-events-none"></div>
+  <div class="absolute inset-0 grain pointer-events-none"></div>
+
+  <div class="relative max-w-4xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-4 py-1.5 text-xs font-semibold tracking-wide text-zinc-300">
+      <span class="w-1.5 h-1.5 rounded-full bg-crimson"></span>
+      B2B Growth Engine &amp; E-Com Creative Studio
+    </div>
+
+    <h1 class="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl leading-[1.08] mt-7 text-white">
+      Scale from 0 to 10K followers and build an authority brand in 90 days.
+    </h1>
+
+    <p class="mt-6 text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+      Turn your domain expertise into a client-acquisition engine through organic authority content. Plus, high-retention performance creative production for scaling e-commerce brands.
+    </p>
+
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="#apply" class="w-full sm:w-auto text-center rounded-full btn-primary text-white font-semibold px-7 py-3.5">
+        Claim Your 90-Day Growth Audit
+      </a>
+      <a href="#results" class="w-full sm:w-auto text-center rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 text-zinc-200 font-semibold px-7 py-3.5 transition-colors">
+        View Client Results
+      </a>
+    </div>
+
+    <!-- Trust metrics -->
+    <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-px rounded-2xl overflow-hidden border border-white/10 bg-white/10">
+      <div class="bg-panel px-6 py-6 text-center">
+        <p class="font-display font-bold text-xl text-white">0 → 10K</p>
+        <p class="text-xs text-zinc-500 mt-1">Targeted followers</p>
+      </div>
+      <div class="bg-panel px-6 py-6 text-center">
+        <p class="font-display font-bold text-xl text-white">High-Ticket</p>
+        <p class="text-xs text-zinc-500 mt-1">Inbound pipeline</p>
+      </div>
+      <div class="bg-panel px-6 py-6 text-center">
+        <p class="font-display font-bold text-xl text-white">48H</p>
+        <p class="text-xs text-zinc-500 mt-1">E-com ad turnaround</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TWO-TRACK SERVICES ============ -->
+<section id="services" class="relative px-5 sm:px-8 py-24 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">One studio, two engines built for different growth problems.</h2>
+      <p class="mt-4 text-zinc-400 leading-relaxed">Choose the track that matches how your business actually grows — through authority, or through ad performance.</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-2 gap-6">
+
+      <!-- Pillar A -->
+      <div class="card-hover relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-8 border-l-2 border-l-crimson">
+        <p class="text-xs font-semibold tracking-wide text-crimson">B2B · Coaches &amp; Consultants</p>
+        <h3 class="font-display font-bold text-2xl text-white mt-2">The 90-Day Authority Sprint</h3>
+        <p class="text-zinc-400 mt-3 text-sm leading-relaxed">Authority, qualified inbound clients, and 0 to 10K targeted audience — built from your expertise, not a content calendar template.</p>
+
+        <ul class="mt-6 space-y-3 text-sm text-zinc-300">
+          <li class="flex gap-3"><svg class="w-5 h-5 text-crimson shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Strategy &amp; ICP mapping</li>
+          <li class="flex gap-3"><svg class="w-5 h-5 text-crimson shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>High-retention scriptwriting</li>
+          <li class="flex gap-3"><svg class="w-5 h-5 text-crimson shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Talking-head editing</li>
+          <li class="flex gap-3"><svg class="w-5 h-5 text-crimson shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Bio funnel setup</li>
+          <li class="flex gap-3"><svg class="w-5 h-5 text-crimson shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>End-to-end distribution</li>
+        </ul>
+      </div>
+
+      <!-- Pillar B -->
+      <div class="card-hover relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-8 border-l-2 border-l-amber">
+        <p class="text-xs font-semibold tracking-wide text-amber">E-Commerce Brands</p>
+        <h3 class="font-display font-bold text-2xl text-white mt-2">Performance Creative Studio</h3>
+        <p class="text-zinc-400 mt-3 text-sm leading-relaxed">Lower CPA and higher ROAS through creative production built to be tested, not just delivered.</p>
+
+        <ul class="mt-6 space-y-3 text-sm text-zinc-300">
+          <li class="flex gap-3"><svg class="w-5 h-5 text-amber shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Cinema-grade product filming</li>
+          <li class="flex gap-3"><svg class="w-5 h-5 text-amber shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Dynamic TikTok / Meta ad editing</li>
+          <li class="flex gap-3"><svg class="w-5 h-5 text-amber shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Multiple hook variations for testing</li>
+          <li class="flex gap-3"><svg class="w-5 h-5 text-amber shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>48-hour delivery</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CORE PROBLEM ============ -->
+<section class="relative px-5 sm:px-8 py-24 border-t border-white/5 bg-panel/40">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-display font-bold text-3xl sm:text-4xl text-white max-w-2xl">Freelancers deliver video files. We deliver pipeline.</h2>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-6">
+      <div class="card-hover rounded-2xl border border-white/10 bg-white/[0.03] p-7">
+        <div class="w-10 h-10 rounded-lg bg-crimson/10 flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-crimson" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12s3.75-7.5 9.75-7.5 9.75 7.5 9.75 7.5-3.75 7.5-9.75 7.5S2.25 12 2.25 12z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg text-white">The vanity metric trap</h3>
+        <p class="mt-2 text-sm text-zinc-400 leading-relaxed">Views without buyer intent are useless. We build content that filters for the audience that actually books calls.</p>
+      </div>
+
+      <div class="card-hover rounded-2xl border border-white/10 bg-white/[0.03] p-7">
+        <div class="w-10 h-10 rounded-lg bg-crimson/10 flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-crimson" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg text-white">Founder time drain</h3>
+        <p class="mt-2 text-sm text-zinc-400 leading-relaxed">You record for 60 minutes a week. We handle scripting, editing, captions, distribution, and reporting.</p>
+      </div>
+
+      <div class="card-hover rounded-2xl border border-white/10 bg-white/[0.03] p-7">
+        <div class="w-10 h-10 rounded-lg bg-crimson/10 flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-crimson" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5M21 12H3"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg text-white">Zero funnel architecture</h3>
+        <p class="mt-2 text-sm text-zinc-400 leading-relaxed">Every post directs your audience into a qualified inbound call — not a bio link that goes nowhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEHIND THE SCENES / PRODUCTION GALLERY ============ -->
+<section id="bts" class="relative px-5 sm:px-8 py-24 border-t border-white/5 overflow-hidden">
+  <div class="absolute -top-24 -left-24 w-[420px] h-[420px] glow-crimson blur-3xl pointer-events-none opacity-70"></div>
+  <div class="absolute bottom-0 -right-24 w-[380px] h-[380px] glow-amber blur-3xl pointer-events-none opacity-60"></div>
+
+  <div class="relative max-w-6xl mx-auto">
+    <div class="max-w-2xl">
+      <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-4 py-1.5 text-xs font-semibold tracking-wide text-zinc-300">
+        <span class="w-1.5 h-1.5 rounded-full bg-crimson"></span>
+        In The Trenches
+      </div>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mt-5">Crafting high-retention content from behind the camera.</h2>
+      <p class="mt-4 text-zinc-400 leading-relaxed">A transparent look at our production workflow — from cinema-rig studio shoots to high-precision timeline editing and color grading.</p>
+    </div>
+
+    <!-- Bento grid -->
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4">
+
+      <!-- Slot 1: Featured / large -->
+      <div class="group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden border border-white/10 bg-panel min-h-[320px] md:min-h-0">
+        <img src="images/bts-1.jpg" alt="Director and crew filming on-set with camera rig and lighting" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
+        <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <span class="inline-flex items-center gap-2 rounded-full border border-crimson/30 bg-crimson/15 backdrop-blur-md px-3 py-1.5 text-xs font-semibold text-white">
+            <span class="w-1.5 h-1.5 rounded-full bg-crimson"></span>
+            Studio Direction &amp; Film Rig
+          </span>
+        </div>
+      </div>
+
+      <!-- Slot 2: Editing / color grading -->
+      <div class="group relative md:col-span-2 rounded-2xl overflow-hidden border border-white/10 bg-panel min-h-[220px]">
+        <img src="images/bts-2.jpg" alt="Editor working on a color-graded timeline across dual monitors" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
+        <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <span class="inline-flex items-center gap-2 rounded-full border border-amber/30 bg-amber/15 backdrop-blur-md px-3 py-1.5 text-xs font-semibold text-white">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber"></span>
+            High-Retention Timeline Architecture
+          </span>
+        </div>
+      </div>
+
+      <!-- Slot 3: E-com product filming -->
+      <div class="group relative md:col-span-1 rounded-2xl overflow-hidden border border-white/10 bg-panel min-h-[220px]">
+        <img src="images/bts-3.jpg" alt="Product filming set with macro lens, turntable, and studio lighting" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
+        <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5">
+          <span class="inline-flex items-center gap-2 rounded-full border border-amber/30 bg-amber/15 backdrop-blur-md px-2.5 py-1 text-[11px] font-semibold text-white">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber"></span>
+            E-Com Performance Creative Staging
+          </span>
+        </div>
+      </div>
+
+      <!-- Slot 4: Talking-head setup -->
+      <div class="group relative md:col-span-1 rounded-2xl overflow-hidden border border-white/10 bg-panel min-h-[220px]">
+        <img src="images/bts-4.jpg" alt="Talking-head creator setup with teleprompter, ring light, and wireless lav mic" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
+        <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5">
+          <span class="inline-flex items-center gap-2 rounded-full border border-crimson/30 bg-crimson/15 backdrop-blur-md px-2.5 py-1 text-[11px] font-semibold text-white">
+            <span class="w-1.5 h-1.5 rounded-full bg-crimson"></span>
+            Executive Authority Framing
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom pill banner -->
+    <div class="mt-10 flex justify-center">
+      <div class="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-md px-6 py-3 text-xs sm:text-sm text-zinc-300">
+        <span class="font-semibold text-white">100% In-House Production</span>
+        <span class="text-zinc-600">·</span>
+        <span>Cinema Gear &amp; Professional Suites</span>
+        <span class="text-zinc-600">·</span>
+        <span>No Outsourced Freelancer Chaos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS / TESTIMONIALS ============ -->
+<section id="results" class="relative px-5 sm:px-8 py-24 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">Proven across coaches, consultants, and e-commerce brands.</h2>
+      <p class="mt-4 text-zinc-400">Real numbers from clients running both tracks of the studio.</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-6">
+
+      <div class="card-hover rounded-2xl border border-white/10 bg-white/[0.03] p-7 flex flex-col">
+        <div class="inline-flex self-start items-center rounded-full border border-crimson/30 bg-crimson/10 px-3 py-1 text-xs font-semibold text-crimson">
+          +11.2K Followers · $34K Pipeline Generated
+        </div>
+        <p class="mt-5 text-zinc-300 text-sm leading-relaxed flex-1">"We went from zero presence on LinkedIn and Instagram to over 11,000 targeted followers in under 90 days. More importantly, it generated 14 closed consulting retainers straight from direct messages."</p>
+        <p class="mt-5 text-xs font-semibold text-zinc-500">B2B Strategy Consultant</p>
+      </div>
+
+      <div class="card-hover rounded-2xl border border-white/10 bg-white/[0.03] p-7 flex flex-col">
+        <div class="inline-flex self-start items-center rounded-full border border-crimson/30 bg-crimson/10 px-3 py-1 text-xs font-semibold text-crimson">
+          0 to 10K in 78 Days · 3x Inbound Calls
+        </div>
+        <p class="mt-5 text-zinc-300 text-sm leading-relaxed flex-1">"The scripting process eliminated all the friction. I spend 45 minutes filming on Monday, and FLAW.CO handles the rest. My calendar is consistently booked two weeks out."</p>
+        <p class="mt-5 text-xs font-semibold text-zinc-500">Executive Leadership Coach</p>
+      </div>
+
+      <div class="card-hover rounded-2xl border border-white/10 bg-white/[0.03] p-7 flex flex-col">
+        <div class="inline-flex self-start items-center rounded-full border border-amber/30 bg-amber/10 px-3 py-1 text-xs font-semibold text-amber">
+          3.4x ROAS · 48-Hour Delivery
+        </div>
+        <p class="mt-5 text-zinc-300 text-sm leading-relaxed flex-1">"Their 48-hour creative turnaround changed our testing cycle completely. The hook variations alone dropped our cost per acquisition by 32% on Meta ads."</p>
+        <p class="mt-5 text-xs font-semibold text-zinc-500">Direct-to-Consumer Founder</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section id="process" class="relative px-5 sm:px-8 py-24 border-t border-white/5 bg-panel/40">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">The 90-day process, step by step.</h2>
+      <p class="mt-4 text-zinc-400">A fixed sequence, run the same way for every client, so nothing depends on guesswork.</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-4 gap-6">
+      <div class="relative pl-0">
+        <p class="font-display font-extrabold text-3xl text-crimson/70">01</p>
+        <h3 class="font-display font-semibold text-white mt-3">Positioning &amp; Strategy</h3>
+        <p class="mt-2 text-sm text-zinc-400 leading-relaxed">ICP audit, tone of voice, and bio funnel architecture.</p>
+      </div>
+      <div class="relative pl-0">
+        <p class="font-display font-extrabold text-3xl text-crimson/70">02</p>
+        <h3 class="font-display font-semibold text-white mt-3">Content Engine</h3>
+        <p class="mt-2 text-sm text-zinc-400 leading-relaxed">High-retention scriptwriting engineered for authority.</p>
+      </div>
+      <div class="relative pl-0">
+        <p class="font-display font-extrabold text-3xl text-crimson/70">03</p>
+        <h3 class="font-display font-semibold text-white mt-3">Production</h3>
+        <p class="mt-2 text-sm text-zinc-400 leading-relaxed">High-tier editing, dynamic pacing, kinetic typography.</p>
+      </div>
+      <div class="relative pl-0">
+        <p class="font-display font-extrabold text-3xl text-crimson/70">04</p>
+        <h3 class="font-display font-semibold text-white mt-3">Scale to 10K</h3>
+        <p class="mt-2 text-sm text-zinc-400 leading-relaxed">Distribution schedule, performance analytics, and lead capture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PACKAGES ============ -->
+<section id="packages" class="relative px-5 sm:px-8 py-24 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">Packages built around each track.</h2>
+      <p class="mt-4 text-zinc-400">Pricing is scoped on the audit call based on volume and current baseline — here's what's included.</p>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-2 gap-6">
+
+      <div class="card-hover rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-8">
+        <p class="text-xs font-semibold tracking-wide text-crimson">B2B · Coaches &amp; Consultants</p>
+        <h3 class="font-display font-bold text-2xl text-white mt-2">The 90-Day Authority Sprint</h3>
+        <ul class="mt-6 space-y-3 text-sm text-zinc-300">
+          <li class="flex gap-3"><svg class="w-5 h-5 text-crimson shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>12–16 authority videos per month</li>
+          <li class="flex gap-3"><svg class="w-5 h-5 text-crimson shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Custom scripting for every post</li>
+          <li class="flex gap-3"><svg class="w-5 h-5 text-crimson shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Full bio &amp; funnel overhaul</li>
+          <li class="flex gap-3"><svg class="w-5 h-5 text-crimson shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Weekly KPI reviews</li>
+        </ul>
+        <a href="#apply" class="mt-8 block text-center rounded-full border border-crimson/40 hover:bg-crimson/10 text-white font-semibold px-6 py-3 transition-colors">Apply for this track</a>
+      </div>
+
+      <div class="card-hover rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-8">
+        <p class="text-xs font-semibold tracking-wide text-amber">E-Commerce Brands</p>
+        <h3 class="font-display font-bold text-2xl text-white mt-2">E-Commerce Performance Pack</h3>
+        <ul class="mt-6 space-y-3 text-sm text-zinc-300">
+          <li class="flex gap-3"><svg class="w-5 h-5 text-amber shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>10–20 ad creatives per month</li>
+          <li class="flex gap-3"><svg class="w-5 h-5 text-amber shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Hook split testing</li>
+          <li class="flex gap-3"><svg class="w-5 h-5 text-amber shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>48-hour delivery on every batch</li>
+          <li class="flex gap-3"><svg class="w-5 h-5 text-amber shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Dedicated creative director</li>
+        </ul>
+        <a href="#apply" class="mt-8 block text-center rounded-full border border-amber/40 hover:bg-amber/10 text-white font-semibold px-6 py-3 transition-colors">Apply for this track</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPLICATION FORM ============ -->
+<section id="apply" class="relative px-5 sm:px-8 py-24 border-t border-white/5 bg-panel/40 overflow-hidden">
+  <div class="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[560px] h-[560px] glow-crimson blur-3xl pointer-events-none opacity-60"></div>
+
+  <div class="relative max-w-xl mx-auto">
+    <div class="text-center">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">Book your 15-minute strategy call.</h2>
+      <p class="mt-4 text-zinc-400">Tell us who you are and where you want to be in 90 days. We'll reply on WhatsApp.</p>
+    </div>
+
+    <form id="applyForm" class="mt-10 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6 sm:p-8 space-y-6">
+
+      <!-- Track toggle -->
+      <div class="grid grid-cols-2 gap-3" role="radiogroup" aria-label="Business type">
+        <button type="button" data-track="b2b" class="track-toggle-btn track-btn-active rounded-xl border border-crimson bg-crimson/10 text-white text-sm font-semibold px-4 py-3">
+          I'm a B2B Founder / Coach
+        </button>
+        <button type="button" data-track="ecom" class="track-toggle-btn rounded-xl border border-white/10 text-zinc-400 text-sm font-semibold px-4 py-3 hover:border-white/25">
+          I'm an E-Commerce Brand
+        </button>
+      </div>
+      <input type="hidden" id="trackInput" value="b2b">
+
+      <div>
+        <label for="fullName" class="block text-sm font-medium text-zinc-300 mb-2">Full name</label>
+        <input required id="fullName" type="text" placeholder="Jordan Reyes"
+          class="w-full rounded-xl border border-white/10 bg-base/60 px-4 py-3 text-sm text-white placeholder-zinc-600 focus:border-crimson/60 outline-none">
+      </div>
+
+      <div>
+        <label for="bizLink" id="bizLinkLabel" class="block text-sm font-medium text-zinc-300 mb-2">Business / social link</label>
+        <input required id="bizLink" type="text" placeholder="instagram.com/yourbrand"
+          class="w-full rounded-xl border border-white/10 bg-base/60 px-4 py-3 text-sm text-white placeholder-zinc-600 focus:border-crimson/60 outline-none">
+      </div>
+
+      <div>
+        <label for="goal" id="goalLabel" class="block text-sm font-medium text-zinc-300 mb-2">Monthly growth goal</label>
+        <input required id="goal" type="text" placeholder="e.g. 2,000 new followers / 5 booked calls"
+          class="w-full rounded-xl border border-white/10 bg-base/60 px-4 py-3 text-sm text-white placeholder-zinc-600 focus:border-crimson/60 outline-none">
+      </div>
+
+      <button type="submit" id="submitBtn" class="w-full rounded-full btn-primary text-white font-semibold px-6 py-4 flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2.003c-5.514 0-9.997 4.484-9.997 9.997 0 1.763.462 3.486 1.34 5.003l-1.427 5.213 5.339-1.401a9.96 9.96 0 004.745 1.187h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.671-1.04-5.182-2.929-7.07a9.938 9.938 0 00-7.072-2.932zm0 18.166h-.003a8.14 8.14 0 01-4.152-1.14l-.298-.177-3.169.832.846-3.09-.194-.317a8.146 8.146 0 01-1.256-4.353c0-4.508 3.669-8.176 8.181-8.176 2.185 0 4.238.851 5.783 2.397a8.126 8.126 0 012.394 5.788c0 4.508-3.669 8.236-8.132 8.236z"/></svg>
+        Book Your 15-Minute Strategy Call on WhatsApp
+      </button>
+      <p class="text-xs text-center text-zinc-500">Opens WhatsApp with your details pre-filled. No spam, ever.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="relative px-5 sm:px-8 py-12 border-t border-white/5">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+    <a href="#top" class="flex items-center gap-2 font-display font-extrabold text-base tracking-tight text-white">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-crimson"></span>
+      FLAW<span class="text-crimson">.CO</span>
+    </a>
+
+    <div class="flex items-center gap-6 text-sm text-zinc-500">
+      <a href="#" class="hover:text-zinc-300 transition-colors">Instagram</a>
+      <a href="#" class="hover:text-zinc-300 transition-colors">LinkedIn</a>
+      <a href="#" class="hover:text-zinc-300 transition-colors">TikTok</a>
+      <a href="mailto:hello@flaw.co" class="hover:text-zinc-300 transition-colors">hello@flaw.co</a>
+    </div>
+
+    <p class="text-xs text-zinc-600">© 2026 FLAW.CO. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconMenu = document.getElementById('iconMenu');
+  const iconClose = document.getElementById('iconClose');
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconMenu.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      iconMenu.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Track toggle (B2B vs E-commerce) — restyles the form and adapts copy
+  const trackButtons = document.querySelectorAll('.track-btn-active, [data-track]');
+  const trackInput = document.getElementById('trackInput');
+  const bizLinkLabel = document.getElementById('bizLinkLabel');
+  const bizLink = document.getElementById('bizLink');
+  const goalLabel = document.getElementById('goalLabel');
+  const goal = document.getElementById('goal');
+
+  function setTrack(track) {
+    trackInput.value = track;
+    document.querySelectorAll('[data-track]').forEach(btn => {
+      const active = btn.dataset.track === track;
+      btn.classList.toggle('border-crimson', active && track === 'b2b');
+      btn.classList.toggle('bg-crimson/10', active && track === 'b2b');
+      btn.classList.toggle('border-amber', active && track === 'ecom');
+      btn.classList.toggle('bg-amber/10', active && track === 'ecom');
+      btn.classList.toggle('text-white', active);
+      btn.classList.toggle('text-zinc-400', !active);
+      btn.classList.toggle('border-white/10', !active);
+    });
+
+    if (track === 'b2b') {
+      bizLinkLabel.textContent = 'Business / social link';
+      bizLink.placeholder = 'instagram.com/yourbrand';
+      goalLabel.textContent = 'Monthly growth goal';
+      goal.placeholder = 'e.g. 2,000 new followers / 5 booked calls';
+    } else {
+      bizLinkLabel.textContent = 'Store / brand link';
+      bizLink.placeholder = 'yourstore.com';
+      goalLabel.textContent = 'Monthly performance goal';
+      goal.placeholder = 'e.g. lower CPA by 25% / scale to $50K ad spend';
+    }
+  }
+
+  document.querySelectorAll('[data-track]').forEach(btn => {
+    btn.addEventListener('click', () => setTrack(btn.dataset.track));
+  });
+
+  // Form submit -> WhatsApp
+  const applyForm = document.getElementById('applyForm');
+  const WHATSAPP_NUMBER = '10000000000'; // Replace with FLAW.CO's real WhatsApp number
+
+  applyForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('fullName').value.trim();
+    const link = bizLink.value.trim();
+    const goalVal = goal.value.trim();
+    const track = trackInput.value === 'b2b' ? 'B2B Founder / Coach' : 'E-Commerce Brand';
+
+    const message =
+      `Hi FLAW.CO, I'd like to book a 15-minute strategy call.%0A%0A` +
+      `Name: ${encodeURIComponent(name)}%0A` +
+      `Type: ${encodeURIComponent(track)}%0A` +
+      `Link: ${encodeURIComponent(link)}%0A` +
+      `Goal: ${encodeURIComponent(goalVal)}`;
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+    window.open(url, '_blank');
+  });
+
+  // Navbar shadow on scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 8) {
+      navbar.classList.add('shadow-[0_1px_0_0_rgba(255,255,255,0.05)]');
+    } else {
+      navbar.classList.remove('shadow-[0_1px_0_0_rgba(255,255,255,0.05)]');
+    }
+  });
+</script>
+
+</body>
+</html>
