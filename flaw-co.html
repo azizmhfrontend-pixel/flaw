@@ -279,7 +279,7 @@
 
       <!-- Slot 1: Featured / large -->
       <div class="group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden border border-white/10 bg-panel min-h-[320px] md:min-h-0">
-        <img src="images/bts-1.jpg" alt="Director and crew filming on-set with camera rig and lighting" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Director and crew filming on-set with camera rig and lighting" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
         <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl"></div>
         <div class="absolute bottom-0 left-0 right-0 p-6">
@@ -292,7 +292,7 @@
 
       <!-- Slot 2: Editing / color grading -->
       <div class="group relative md:col-span-2 rounded-2xl overflow-hidden border border-white/10 bg-panel min-h-[220px]">
-        <img src="images/bts-2.jpg" alt="Editor working on a color-graded timeline across dual monitors" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Editor working on a color-graded timeline across dual monitors" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
         <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl"></div>
         <div class="absolute bottom-0 left-0 right-0 p-6">
@@ -305,7 +305,7 @@
 
       <!-- Slot 3: E-com product filming -->
       <div class="group relative md:col-span-1 rounded-2xl overflow-hidden border border-white/10 bg-panel min-h-[220px]">
-        <img src="images/bts-3.jpg" alt="Product filming set with macro lens, turntable, and studio lighting" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Product filming set with macro lens, turntable, and studio lighting" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
         <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl"></div>
         <div class="absolute bottom-0 left-0 right-0 p-5">
@@ -318,7 +318,7 @@
 
       <!-- Slot 4: Talking-head setup -->
       <div class="group relative md:col-span-1 rounded-2xl overflow-hidden border border-white/10 bg-panel min-h-[220px]">
-        <img src="images/bts-4.jpg" alt="Talking-head creator setup with teleprompter, ring light, and wireless lav mic" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Talking-head creator setup with teleprompter, ring light, and wireless lav mic" class="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
         <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl"></div>
         <div class="absolute bottom-0 left-0 right-0 p-5">
@@ -467,10 +467,10 @@
 
       <!-- Track toggle -->
       <div class="grid grid-cols-2 gap-3" role="radiogroup" aria-label="Business type">
-        <button type="button" data-track="b2b" class="track-toggle-btn track-btn-active rounded-xl border border-crimson bg-crimson/10 text-white text-sm font-semibold px-4 py-3">
+        <button type="button" role="radio" aria-checked="true" data-track="b2b" class="track-toggle-btn track-btn-active rounded-xl border border-crimson bg-crimson/10 text-white text-sm font-semibold px-4 py-3">
           I'm a B2B Founder / Coach
         </button>
-        <button type="button" data-track="ecom" class="track-toggle-btn rounded-xl border border-white/10 text-zinc-400 text-sm font-semibold px-4 py-3 hover:border-white/25">
+        <button type="button" role="radio" aria-checked="false" data-track="ecom" class="track-toggle-btn rounded-xl border border-white/10 text-zinc-400 text-sm font-semibold px-4 py-3 hover:border-white/25">
           I'm an E-Commerce Brand
         </button>
       </div>
@@ -558,6 +558,7 @@
     trackInput.value = track;
     document.querySelectorAll('[data-track]').forEach(btn => {
       const active = btn.dataset.track === track;
+      btn.setAttribute('aria-checked', String(active));
       btn.classList.toggle('border-crimson', active && track === 'b2b');
       btn.classList.toggle('bg-crimson/10', active && track === 'b2b');
       btn.classList.toggle('border-amber', active && track === 'ecom');
